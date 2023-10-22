@@ -164,10 +164,10 @@
     }
     detectApple()
     })(window)</script><link rel="stylesheet" href="/css/tag.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://natsusakiyomi.github.io/"><i class="fa-fw fas fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-link"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/log/"><i class="fa-fw fa-solid fa-book"></i><span> 更新日志</span></a></div><div class="menus_item"><a class="site-page" href="/artitalk/"><i class="fa-fw fa-solid fa-message"></i><span> 动态</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa-solid fa-user-group"></i><span> 友情链接</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/top_img/white_rabbit.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Yomi"><span class="site-name">Yomi</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://natsusakiyomi.github.io/"><i class="fa-fw fas fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-link"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/log/"><i class="fa-fw fa-solid fa-book"></i><span> 更新日志</span></a></div><div class="menus_item"><a class="site-page" href="/artitalk/"><i class="fa-fw fa-solid fa-message"></i><span> 动态</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa-solid fa-user-group"></i><span> 友情链接</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">UCAS算法OJ：分治</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-19T07:52:03.000Z" title="发表于 2023-10-19 15:52:03">2023-10-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-22T15:20:08.000Z" title="更新于 2023-10-22 23:20:08">2023-10-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/%E7%BC%96%E7%A8%8B-%E7%AE%97%E6%B3%95%E6%8B%BE%E8%B4%9D/">编程,算法拾贝</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="UCAS算法OJ：分治"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>第一周的分治章节oj，里面很多“找规律”题，只能说递推这块勉强能算得上分治，评价为放水。另外里面足足有四道题来自于HDUoj，后面由于亚运会进入重保，这四道题均无法提交。当然即便如此，同学们依然可以靠其余6道题拿到作业满分。难道这也在你的计算之中吗，助教！</p>
-<h2 id="A-究极快排"><a href="#A-究极快排" class="headerlink" title="A 究极快排"></a>A 究极快排</h2><div class="note icon modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>给出一个无序正整数组，你需要不断交换其中<emp>相邻</emp>的两个直至数组有序。</p>
+<h2 id="A-究极快排"><a href="#A-究极快排" class="headerlink" title="A 究极快排"></a>A 究极快排</h2><div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>给出一个无序正整数组，你需要不断交换其中<emp>相邻</emp>的两个直至数组有序。</p>
 </div>
 
-<div class="note icon modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>求最小交换次数。</p>
+<div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>求最小交换次数。</p>
 </div>
 
 <details open><summary> 题解 </summary>
@@ -177,10 +177,10 @@
             </details>
 
 <hr>
-<h2 id="B-不用递归的汉诺塔"><a href="#B-不用递归的汉诺塔" class="headerlink" title="B 不用递归的汉诺塔"></a>B 不用递归的汉诺塔</h2><div class="note icon modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>现有一新汉诺塔：圆盘按放的顺序标序号，每个柱子上相邻的圆盘序号和为平方数。给出汉诺塔的柱子数。</p>
+<h2 id="B-不用递归的汉诺塔"><a href="#B-不用递归的汉诺塔" class="headerlink" title="B 不用递归的汉诺塔"></a>B 不用递归的汉诺塔</h2><div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>现有一新汉诺塔：圆盘按放的顺序标序号，每个柱子上相邻的圆盘序号和为平方数。给出汉诺塔的柱子数。</p>
 </div>
 
-<div class="note icon modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>求最多能放几个圆盘。</p>
+<div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>求最多能放几个圆盘。</p>
 </div>
 
 <details open><summary> 题解 </summary>
@@ -190,10 +190,10 @@
             </details>
 
 <hr>
-<h2 id="C-不用递归的斐波那契数列"><a href="#C-不用递归的斐波那契数列" class="headerlink" title="C 不用递归的斐波那契数列"></a>C 不用递归的斐波那契数列</h2><div class="note icon modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>给出数列第0、1项的斐波那契数列。</p>
+<h2 id="C-不用递归的斐波那契数列"><a href="#C-不用递归的斐波那契数列" class="headerlink" title="C 不用递归的斐波那契数列"></a>C 不用递归的斐波那契数列</h2><div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>给出数列第0、1项的斐波那契数列。</p>
 </div>
 
-<div class="note icon modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>求数列第n项能否被3整除。</p>
+<div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>求数列第n项能否被3整除。</p>
 </div>
 
 <details open><summary> 题解 </summary>
@@ -203,10 +203,10 @@
             </details>
 
 <hr>
-<h2 id="D-交叉线平分点问题"><a href="#D-交叉线平分点问题" class="headerlink" title="D 交叉线平分点问题"></a>D 交叉线平分点问题</h2><div class="note icon modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>平面上给出4n个整数数组表示点坐标，两条交叉的直线平分这些点为4份。</p>
+<h2 id="D-交叉线平分点问题"><a href="#D-交叉线平分点问题" class="headerlink" title="D 交叉线平分点问题"></a>D 交叉线平分点问题</h2><div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>平面上给出4n个整数数组表示点坐标，两条交叉的直线平分这些点为4份。</p>
 </div>
 
-<div class="note icon modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>分别求穿过两条线的两个点，如果没有则输出-1。</p>
+<div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>分别求穿过两条线的两个点，如果没有则输出-1。</p>
 </div>
 
 <details open><summary> 题解 </summary>
@@ -216,10 +216,10 @@
             </details>
 
 <hr>
-<h2 id="E-防火网"><a href="#E-防火网" class="headerlink" title="E 防火网"></a>E 防火网</h2><div class="note icon modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>在一个小于4×4大小的方形网格上，布置着一些墙和防御工事，两者均占一个格子。防御工事不能在同一行或同一列。输入网格的大小和墙的布置情况。</p>
+<h2 id="E-防火网"><a href="#E-防火网" class="headerlink" title="E 防火网"></a>E 防火网</h2><div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>在一个小于4×4大小的方形网格上，布置着一些墙和防御工事，两者均占一个格子。防御工事不能在同一行或同一列。输入网格的大小和墙的布置情况。</p>
 </div>
 
-<div class="note icon modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>输出最多可以布置的防御工事数量。</p>
+<div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>输出最多可以布置的防御工事数量。</p>
 </div>
 
 <details open><summary> 题解 </summary>
@@ -229,10 +229,10 @@
             </details>
 
 <hr>
-<h2 id="F-格力兰岛"><a href="#F-格力兰岛" class="headerlink" title="F 格力兰岛"></a>F 格力兰岛</h2><div class="note icon modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>在一个m×n的方形网格中，每个网格四个顶点互相连接。连接的地方边长度为1，对角线的地方为$\sqrt{2}$。给出m和n。</p>
+<h2 id="F-格力兰岛"><a href="#F-格力兰岛" class="headerlink" title="F 格力兰岛"></a>F 格力兰岛</h2><div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>在一个m×n的方形网格中，每个网格四个顶点互相连接。连接的地方边长度为1，对角线的地方为$\sqrt{2}$。给出m和n。</p>
 </div>
 
-<div class="note icon modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>求经过所有点并回到起点的最短路径长度。</p>
+<div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>求经过所有点并回到起点的最短路径长度。</p>
 </div>
 
 <details open><summary> 题解 </summary>
@@ -242,10 +242,10 @@
             </details>
 
 <hr>
-<h2 id="G-最大子数组和"><a href="#G-最大子数组和" class="headerlink" title="G 最大子数组和"></a>G 最大子数组和</h2><div class="note icon modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>给出一个含整数的数组，找出最大的连续子数组，使得它们的和最大。</p>
+<h2 id="G-最大子数组和"><a href="#G-最大子数组和" class="headerlink" title="G 最大子数组和"></a>G 最大子数组和</h2><div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>给出一个含整数的数组，找出最大的连续子数组，使得它们的和最大。</p>
 </div>
 
-<div class="note icon modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>给出最大子数组和。</p>
+<div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>给出最大子数组和。</p>
 </div>
 
 <details open><summary> 题解 </summary>
@@ -255,10 +255,10 @@
             </details>
 
 <hr>
-<h2 id="H-高维空间分割问题"><a href="#H-高维空间分割问题" class="headerlink" title="H 高维空间分割问题"></a>H 高维空间分割问题</h2><div class="note icon modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>给出一个整数m。</p>
+<h2 id="H-高维空间分割问题"><a href="#H-高维空间分割问题" class="headerlink" title="H 高维空间分割问题"></a>H 高维空间分割问题</h2><div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>给出一个整数m。</p>
 </div>
 
-<div class="note icon modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>计算m维空间下，n个m-1维的关于n的多项表达式的系数，从大到小输出，用假分数表示，分子分母已化简。</p>
+<div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>计算m维空间下，n个m-1维的关于n的多项表达式的系数，从大到小输出，用假分数表示，分子分母已化简。</p>
 </div>
 
 <details open><summary> 题解 </summary>
@@ -267,10 +267,10 @@
               </div>
             </details>
 
-<h2 id="I-套圈问题"><a href="#I-套圈问题" class="headerlink" title="I 套圈问题"></a>I 套圈问题</h2><div class="note icon modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>给出二维平面整数点坐标。</p>
+<h2 id="I-套圈问题"><a href="#I-套圈问题" class="headerlink" title="I 套圈问题"></a>I 套圈问题</h2><div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>给出二维平面整数点坐标。</p>
 </div>
 
-<div class="note icon modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>求能够至少套中其中两个点的最小的圆的半径。</p>
+<div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>求能够至少套中其中两个点的最小的圆的半径。</p>
 </div>
 
 <details open><summary> 题解 </summary>
@@ -280,10 +280,10 @@
             </details>
 
 <hr>
-<h2 id="J-计算得分数"><a href="#J-计算得分数" class="headerlink" title="J 计算得分数"></a>J 计算得分数</h2><div class="note icon modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>给出两个整数非负整数，前者是两个数的和，后者是两个数差的绝对值。</p>
+<h2 id="J-计算得分数"><a href="#J-计算得分数" class="headerlink" title="J 计算得分数"></a>J 计算得分数</h2><div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>给出两个整数非负整数，前者是两个数的和，后者是两个数差的绝对值。</p>
 </div>
 
-<div class="note icon modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>求这两个数，如果不是非负整数则输出<code>impossible</code>。</p>
+<div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>求这两个数，如果不是非负整数则输出<code>impossible</code>。</p>
 </div>
 
 <details open><summary> 题解 </summary>

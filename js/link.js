@@ -1,7 +1,7 @@
 'use strict';
 
-// <a href="" title="" target="">title, url</a>
-// <a href="" title="" target="">title, url, img</a>
+// {% link title, url %}
+// {% link title, url, img %}
 hexo.extend.tag.register('link', function(args) {
   if(/::/g.test(args)){
     args = args.join(' ').split('::');

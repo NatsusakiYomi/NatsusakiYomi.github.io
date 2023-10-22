@@ -186,9 +186,10 @@ const btf = {
   },
 
   unwrap: el => {
-    const parent = el.parentNode
-    if (parent && parent !== document.body) {
-      parent.replaceChild(el, parent)
+    const elParentNode = el.parentNode
+    if (elParentNode !== document.body) {
+      elParentNode.parentNode.insertBefore(el, elParentNode)
+      elParentNode.parentNode.removeChild(elParentNode)
     }
   },
 
@@ -210,7 +211,13 @@ const btf = {
     const service = GLOBAL_CONFIG.lightbox
 
     if (service === 'mediumZoom') {
-      mediumZoom(ele, { background: 'var(--zoom-bg)' })
+      const zoom = mediumZoom(ele)
+      zoom.on('open', e => {
+        const photoBg = document.documentElement.getAttribute('data-theme') === 'dark' ? '#121212' : '#fff'
+        zoom.update({
+          background: photoBg
+        })
+      })
     }
 
     if (service === 'fancybox') {
@@ -295,13 +302,5 @@ const btf = {
     const scrollPercentRounded = Math.round(scrollPercent * 100)
     const percentage = (scrollPercentRounded > 100) ? 100 : (scrollPercentRounded <= 0) ? 0 : scrollPercentRounded
     return percentage
-  },
-
-  addModeChange: (name, fn) => {
-    if (window.themeChange && window.themeChange[name]) return
-    window.themeChange = {
-      ...window.themeChange,
-      [name]: fn
-    }
   }
 }

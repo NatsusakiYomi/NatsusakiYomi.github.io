@@ -1,0 +1,315 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>UCAS算法OJ：动规 | Yomi</title><meta name="author" content="Yomi"><meta name="copyright" content="Yomi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="算法OJ题目总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UCAS算法OJ：动规">
+<meta property="og:url" content="https://natsusakiyomi.github.io/2024/01/08/post-gra-alg-2/index.html">
+<meta property="og:site_name" content="Yomi">
+<meta property="og:description" content="算法OJ题目总结">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://natsusakiyomi.github.io/img/algo.jpg">
+<meta property="article:published_time" content="2024-01-08T07:53:16.000Z">
+<meta property="article:modified_time" content="2024-01-08T10:14:30.000Z">
+<meta property="article:author" content="Yomi">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://natsusakiyomi.github.io/img/algo.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://natsusakiyomi.github.io/2024/01/08/post-gra-alg-2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":3,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Yomi","link":"链接: ","source":"来源: Yomi","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'UCAS算法OJ：动规',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-08 18:14:30'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://natsusakiyomi.github.io/"><i class="fa-fw fas fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-link"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/log/"><i class="fa-fw fa-solid fa-book"></i><span> 更新日志</span></a></div><div class="menus_item"><a class="site-page" href="/artitalk/"><i class="fa-fw fa-solid fa-message"></i><span> 动态</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa-solid fa-user-group"></i><span> 友情链接</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/top_img/white_rabbit.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Yomi"><span class="site-name">Yomi</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="https://natsusakiyomi.github.io/"><i class="fa-fw fas fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-link"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/log/"><i class="fa-fw fa-solid fa-book"></i><span> 更新日志</span></a></div><div class="menus_item"><a class="site-page" href="/artitalk/"><i class="fa-fw fa-solid fa-message"></i><span> 动态</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa-solid fa-user-group"></i><span> 友情链接</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">UCAS算法OJ：动规</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-08T07:53:16.000Z" title="发表于 2024-01-08 15:53:16">2024-01-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-08T10:14:30.000Z" title="更新于 2024-01-08 18:14:30">2024-01-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/%E7%AE%97%E6%B3%95%E6%8B%BE%E8%B4%9D/">算法拾贝</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="UCAS算法OJ：动规"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>第二周的动规章节，H题数独貌似是用DLX求解精确覆盖问题，暂时搁置到复习。</p>
+<h2 id="A-劲歌金曲"><a href="#A-劲歌金曲" class="headerlink" title="A 劲歌金曲"></a>A 劲歌金曲</h2><div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>n首歌，所剩时间t， 每首歌不超过3分钟，歌曲总长度总比t大，只有劲歌金曲长达663s。</p>
+</div>
+
+<div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>唱尽可能多的歌，并且尽可能晚离开。</p>
+</div>
+
+<details open><summary> 题解 </summary>
+              <div class='content'>
+              <p>注意<code>dp[i]</code>容纳的是背包容量为i（时间限制为i）时最多可以唱多少歌及相应时间，该时间并不一定是i，比较时先比较歌数，再比较时间。递归表达式为：<br>$$<br>dp[i]&#x3D;\max (dp[i-songs[k]]+t[k],dp[i])<br>$$</p><div class="note warning flat"><p>dp可以用省内存方式：只记录一行，循环时从右往左（如果递推式只用到左上边）</p></div><div class="note warning flat"><p>时间限制应该是t-1，因为假如前面的歌用到了最后1s，不如替换成删除后换成劲歌金曲。所以无论如何最后都要留出1s给劲歌金曲。</p></div>
+              </div>
+            </details>
+
+<hr>
+<h2 id="B-最小回文子串分割"><a href="#B-最小回文子串分割" class="headerlink" title="B 最小回文子串分割"></a>B 最小回文子串分割</h2><div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>一个字符串。</p>
+</div>
+
+<div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>分割字符串为数个子串后每个子串均为回文串的最少子串数。</p>
+</div>
+
+<details open><summary> 题解 </summary>
+              <div class='content'>
+              <p>这题debug可真费劲。。。</p><p>首先可以先复用最长回文串的代码，也就是<code>dp[i][j]</code>表示i到j是否是回文串。（这里用动规或者直接暴力循环时间复杂度没有区别，空间暴力循环甚至还小点）</p><p>下面是重点：对于字符串类容易想到用前i个字符串表示子问题（<code>group[i]</code>表示前i字母的字符串回文串分组最少的个数）。因此我们这里递推为：<br>$$<br>group[j]&#x3D;\left{<br>\begin{array}{lrl}<br>\min (group[j],group[i]+1) &amp; if\ dp[i+1][j]&#x3D;1\<br>group[j]&amp; if\ dp[i+1][j]\ne 1\<br>\end{array}<br>\right.<br>$$</p><p>初始化条件：<code>dp[i]\[i]=1</code>，<code>group[i]=i</code>。</p><div class="note warning flat"><p>可以使用string数据类型读字符串，用起来比较方便。</p></div><div class="note warning flat"><p>重新赋值不需要用<code>clear()</code>清除自动覆盖。</p></div><div class="note warning flat"><p>注意ij从0开始，为了考虑到i+1可能为0的情况，i从-1开始取值，单独讨论出来前j个（<code>dp[0][j]</code>）正好为回文串的情况（数组越界）</p></div>
+              </div>
+            </details>
+
+<hr>
+<h2 id="C-单向旅行商"><a href="#C-单向旅行商" class="headerlink" title="C 单向旅行商"></a>C 单向旅行商</h2><div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>给一张不超过100×100的整数表格，其中每个数代表到达格子的开销。</p>
+</div>
+
+<div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>要求输出从左到右走格子（只能向右上、右侧、右下一格走，第一行和最后一行互通）最小开销和字典序第一的路径。</p>
+</div>
+
+<details open><summary> 题解 </summary>
+              <div class='content'>
+              <p>递推式异常简单，但是由于考虑输出字典序第一的答案，顺推需要把所有可能答案排一下序（但是一直WA），找了两个小时错误硬是没找到，但是HDU的就过了，无语。改成逆推后又对了（因为在递推的时候默认使用字典序靠前的状态，不需要考虑比较字典序）。所有错还是在顺推找最小字典序的过程中，然而试验了简单的样例依然没发现问题。</p><p>这里我用的是sort对各答案排序，sort是可以用在嵌套的vector上的，结果就是对各vec按字典序排序。</p><p>所以以后需要回溯还是逆推吧。</p>
+              </div>
+            </details>
+
+<hr>
+<h2 id="D-赤壁之战"><a href="#D-赤壁之战" class="headerlink" title="D 赤壁之战"></a>D 赤壁之战</h2><div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>N个情报的价值，按固定顺序排列为序列s，需要选择M个递增的情报泄密且使其和最小。</p>
+</div>
+
+<div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>泄密的情报价值和。</p>
+</div>
+
+<details open><summary> 题解 </summary>
+              <div class='content'>
+              <p>本题很容易想到递归表达式：<br>$$<br>dp[i][j]&#x3D;<br>\sum_{k&lt;j,s[k]&lt;s[j]} dp[i-1][k]<br>$$<br><code>dp[i][j]</code>为以j结尾的长度为i的递增子序列个数.</p><p>但这样暴力去求会是一个$O(mn^2)$复杂度直接裂开。</p><p>这里看到解法非常机智，将所有数递增排列然后用二叉平衡树组织，因为每次二叉平衡树求和操作正好就是序列前面比自己小的那些数求和。</p><p>如何保证只有自己前面的那些比自己小的数被算进去了呢？刚开始二叉平衡树为空，只有我们遍历到某一个数之后我们才将此处的<code>dp[i-1][j]</code>add到树上的第j个情报排序后的位置，这样每次遍历查询到的就是i-1的dp值的和，这样就满足了要求。</p><p>这样同时利用了BIT的两个操作，太机智了。</p><p>当然，还需要注意我们得知道每一个数在递增排序后的位置，这需要我们提前记录。</p><blockquote><p>参考: <a target="_blank" rel="noopener" href="https://www.acwing.com/blog/content/630/">【学习笔记】动态规划—各种 DP 优化 - AcWing</a></p></blockquote><div class="note warning flat"><p>嘿，突然发现code还有bug：没考虑数字相同的情况。需要结构体排序的时候让同数字指向同一个位置——尽管评测机并没有测出来这一点。<br>不过c++有一种<code>lower_bound</code>方法可以用指针找到数组第一个比指定数大的数的位置，虽然<code>lower_bound</code>复杂度为$O(logN)$，但用了却TLE？？？原因暂且未知。</p></div>
+              </div>
+            </details>
+
+<hr>
+<h2 id="E-间谍乘车"><a href="#E-间谍乘车" class="headerlink" title="E 间谍乘车"></a>E 间谍乘车</h2><div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>车站之间的间隔，始发地和目的地的发车时间。已知可以瞬间从车站下车并上车。</p>
+</div>
+
+<div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>准时到达目的地的最少的等待时间，如不能到达则输出<code>impossible</code>。</p>
+</div>
+
+<details open><summary> 题解 </summary>
+              <div class='content'>
+              <p>刚开始一直以为在要求时间内到达就行，寻思那我岂不是一直坐到目的地就行，果然不对，必须在正好的时间到。首先我们计算两个表left和right，分别记录每个车站每个时刻是否有向左开或者向右开的车。<code>dp[i][j]</code>表示车站i上j时刻到目的地的最少等待时间，显然边界条件<code>dp[n][j]=0</code>，我们逆推i，从n-1计算dp。如果i站j时刻有向右的列车<code>dp[i][j]=dp[i+1][j+distance[i]]</code>，向左同理；如果没有<code>dp[i][j]=dp[i][j+1]+1</code>。递推表达式为：<br>$$<br>dp[i][j]&#x3D;\left{<br>\begin{array}{lrl}<br>\min (dp[i+1][j+distance[i]],dp[i][j+1]+1) &amp; if\ left[i][j]&#x3D;1\ and\ right[i][j]\ne 1\<br>\min (dp[i-1][j+distance[i-1]],dp[i][j+1]+1) &amp; if\ right[i][j]&#x3D;1\ and\ left[i][j]\ne 1\<br>\min (dp[i+1][j+distance[i]],dp[i-1][j+distance[i-1]],dp[i][j+1]+1) &amp; if\ left[i][j]&#x3D;1\ and\ right[i][j]&#x3D;1\<br>dp[i][j+1]+1 &amp; if\ left[i][j]\ne 1\ and\ right[i][j]\ne 1\<br>\end{array}<br>\right.<br>$$</p><div class="note warning flat"><p>要在几个取值里取最小。</p></div>
+              </div>
+            </details>
+
+<hr>
+<h2 id="F-巴比伦塔"><a href="#F-巴比伦塔" class="headerlink" title="F 巴比伦塔"></a>F 巴比伦塔</h2><div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>给一些三条边长给定的长方体，每一种提供无穷个。</p>
+</div>
+
+<div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>它们按照长宽分别严格递减堆起来最高高度。</p>
+</div>
+
+<details open><summary> 题解 </summary>
+              <div class='content'>
+              <p>debug再次在非算法部分花了大部分时间：数组越界。好吧原谅我脑子抽了忘了边界应该是case数*3，甚至还换了3种数据结构存长宽高。本题可以利用长宽大小排序，从小往大进行dp计算。因为最小的答案是确定的，所以可以求出dp初始值。</p>
+              </div>
+            </details>
+
+<hr>
+<h2 id="G-计数问题"><a href="#G-计数问题" class="headerlink" title="G 计数问题"></a>G 计数问题</h2><div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>给两个数l、r。</p>
+</div>
+
+<div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>两个数之间所有数0-9出现的次数。</p>
+</div>
+
+<details open><summary> 题解 </summary>
+              <div class='content'>
+              <p>用找规律嗯做出来了。实际上这道是经典数位DP题：<code>dp[i]</code>表示0-i位填满（999…999）包括前导0的0-9的计数，0-9应该出现相同次且<code>dp[i]=dp[i-1]*10+10^(i-1)</code>，前一部分是前i-1位的贡献，后一部分是最后一位的贡献。对于这道题我们可以求0到任意数的计数和，然后用0到r的减去0到l-1的。如何求0到任意数的计数和？从高到低遍历每一位的贡献：每次先计算该位对所有数字的贡献，再加上后面数对首位比该数小的所有数的贡献，再减去前导0的贡献，最后补上后i-1个数对该位对应数字的贡献。</p>
+              </div>
+            </details>
+
+<hr>
+<h2 id="H-数独"><a href="#H-数独" class="headerlink" title="H 数独"></a>H 数独</h2><mark class="hl-label do">to</mark> 
+
+<h2 id="I-修复长城"><a href="#I-修复长城" class="headerlink" title="I 修复长城"></a>I 修复长城</h2><div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>长城有一些损伤部分需要机器人修复，每一部分的修复都需要开销，推迟修复开销会增大，要求给出最小开销修复的算法。机器人的初始位置和移动速度，长城损伤的位置和每个位置立即开始修复的开销和单位时间增长的开销。机器人初始位置一定不在损伤位置。</p>
+</div>
+
+<div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>修好长城的最小开销。</p>
+</div>
+
+<details open><summary> 题解 </summary>
+              <div class='content'>
+              <p>由于机器人修好i、j两个点后必然顺带修好了[i,j]所有的点，所以我们可以应用区间DP（问题可以由两个区间的子问题合并+合并的开销）：<code>dp[i][j]</code>为修好i到j所用的最小开销，由于机器人修好i到j的部分后必然从i出来或从j出来我们分别设这两种情况为<code>dp[i][j][0]</code>和<code>dp[i][j][1]</code>。<code>dp[i][j][0]=max{dp[i-1][j][0]+额外开销,dp[i][j-1][1]+额外开销}</code>，<code>dp[i][j][1]</code>同理。递推表达式为：<br>$$<br>dp[i][j][0]&#x3D;\max(dp[i-1][j][0]+cost,dp[i][j-1][1]+cost’)\<br>dp[i][j][1]&#x3D;\max(dp[i-1][j][0]+cost,dp[i][j-1][1]+cost’)<br>$$</p>
+              </div>
+            </details>
+
+<hr>
+<h2 id="J-服务器设置"><a href="#J-服务器设置" class="headerlink" title="J 服务器设置"></a>J 服务器设置</h2><div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-right"></i><p>通过数组给出一棵树（边为N-1条）的连接状态。一个图需要满足：每个cilent有且只有一个server。每个server可以服务所有相邻的cilent。</p>
+</div>
+
+<div class="note icon-padding modern"><i class="note-icon fa-solid fa-arrow-left"></i><p>最少的server数量。</p>
+</div>
+
+<details open><summary> 题解 </summary>
+              <div class='content'>
+              <p>树形DP，即利用树结构DFS递归的子结构同时做DP。假设我们求出了所有子树的情况，求当前根节点的递归表达式。</p><p>在本题中，我们对子树根节点分三种情况：</p><ul><li>它是服务器，那么子节点任取。<code>dp[i][0]=在其所有子节点中选dp[u][0],dp[u][1]最小求和</code></li><li>它是客户，父节点是服务器，那么子节点必不为服务器。<code>dp[i][1]=其所有子节点中选dp[u][2]求和</code></li><li>它是客户，父节点也是客户，那么子节点必包含一个且只有一个服务器。遍历所有子节点<code>dp[i][2]=其所有子节点中选dp[u][0]和dp[u&#39;][2]求和</code>的最小值→<code>dp[u&#39;][2]可以简化为dp[i][1]-dp[u][2]</code></li></ul><p>设i的子节点集S，递推表达式为：<br>$$<br>dp[i][0]&amp;&#x3D;&amp;\sum_{u\in S}\min(dp[u][0],dp[u][1])\<br>dp[i][1]&amp;&#x3D;&amp;\sum_{u\in S}dp[u][2]\<br>dp[i][2]&amp;&#x3D;&amp;\min_{u\in S}(\sum_{u’\in S-{u}}dp[u’][2]+dp[u][0])\&amp;&#x3D;&amp;<br>dp[i][1]+\min_{u\in S}(dp[u][0]-dp[u][2])<br>$$</p><div class="note warning flat"><p>前两种情况在子节点遍历循环内部，但第三种可以放在循环外，因为循环中可以求前两个（累加），求第三个则需要遍历每种子节点情况，可以先在dfs后存储子节点，然后在循环外求第三种情况。据此我门需要将第三种边界设置为无限大（由于第一次dfs到根节点的取min操作）。</p></div><p>我们通过以下方式构建树：</p><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span>&#123;</span><br><span class="line">	<span class="type">int</span> to,nex;</span><br><span class="line">&#125; edge[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="type">int</span> head[N];</span><br><span class="line"><span class="type">int</span> cnt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> p,<span class="type">int</span> q)</span></span>&#123;</span><br><span class="line">	edge[cnt].to=q;</span><br><span class="line">	edge[cnt].nex=head[p];</span><br><span class="line">	head[p]=cnt++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44291254/article/details/103314341">Perfect Service</a></p></blockquote><p>其中<code>to</code>为该节点相邻的边的节点编号</p><p><code>nex</code>为该点相邻的上一个点在edge的编号（按记录顺序）</p><p><code>head[p]</code>节点p相邻的节点中的最后一个在edge的编号（按记录顺序）</p>
+              </div>
+            </details>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://natsusakiyomi.github.io">Yomi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://natsusakiyomi.github.io/2024/01/08/post-gra-alg-2/">https://natsusakiyomi.github.io/2024/01/08/post-gra-alg-2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://natsusakiyomi.github.io" target="_blank">Yomi</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BC%96%E7%A8%8B/">编程</a><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/">算法</a></div><div class="post_share"><div class="social-share" data-image="/img/algo.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/01/08/post-gra-alg-3/" title="UCAS算法OJ：贪心"><img class="cover" src="/img/algo.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">UCAS算法OJ：贪心</div></div></a></div><div class="next-post pull-right"><a href="/2023/12/15/2023-11-review/" title="2023-11月回顾"><img class="cover" src="/img/December.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2023-11月回顾</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/10/19/post-gra-alg-1/" title="UCAS算法OJ：分治"><img class="cover" src="/img/algo.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-19</div><div class="title">UCAS算法OJ：分治</div></div></a></div><div><a href="/2024/01/08/post-gra-alg-3/" title="UCAS算法OJ：贪心"><img class="cover" src="/img/algo.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-08</div><div class="title">UCAS算法OJ：贪心</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Yomi</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" href="https://natsusakiyomi.github.io/"><i class="iconfont icon-youxishoubing"></i><span>適当に投げる☆</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/NatsusakiYomi" target="_blank" title="Github"><i class="fab fa-github" style="color: #hdhfbb;"></i></a><a class="social-icon" href="https://space.bilibili.com/2283304" target="_blank" title="bilibili"><i class="fa-brands fa-bilibili" style="color: #000000;"></i></a><a class="social-icon" href="https://bangumi.tv/user/lanteng233" target="_blank" title="bangumi"><i class="fa-solid fa-tv" style="color: #000000;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><p align="center">email：lanteng233@gmail.com</p></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#A-%E5%8A%B2%E6%AD%8C%E9%87%91%E6%9B%B2"><span class="toc-number">1.</span> <span class="toc-text">A 劲歌金曲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#B-%E6%9C%80%E5%B0%8F%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2%E5%88%86%E5%89%B2"><span class="toc-number">2.</span> <span class="toc-text">B 最小回文子串分割</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-%E5%8D%95%E5%90%91%E6%97%85%E8%A1%8C%E5%95%86"><span class="toc-number">3.</span> <span class="toc-text">C 单向旅行商</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#D-%E8%B5%A4%E5%A3%81%E4%B9%8B%E6%88%98"><span class="toc-number">4.</span> <span class="toc-text">D 赤壁之战</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#E-%E9%97%B4%E8%B0%8D%E4%B9%98%E8%BD%A6"><span class="toc-number">5.</span> <span class="toc-text">E 间谍乘车</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#F-%E5%B7%B4%E6%AF%94%E4%BC%A6%E5%A1%94"><span class="toc-number">6.</span> <span class="toc-text">F 巴比伦塔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#G-%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text">G 计数问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#H-%E6%95%B0%E7%8B%AC"><span class="toc-number">8.</span> <span class="toc-text">H 数独</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-%E4%BF%AE%E5%A4%8D%E9%95%BF%E5%9F%8E"><span class="toc-number">9.</span> <span class="toc-text">I 修复长城</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#J-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AE%BE%E7%BD%AE"><span class="toc-number">10.</span> <span class="toc-text">J 服务器设置</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/01/08/post-gra-alg-3/" title="UCAS算法OJ：贪心"><img src="/img/algo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="UCAS算法OJ：贪心"/></a><div class="content"><a class="title" href="/2024/01/08/post-gra-alg-3/" title="UCAS算法OJ：贪心">UCAS算法OJ：贪心</a><time datetime="2024-01-08T10:41:52.000Z" title="发表于 2024-01-08 18:41:52">2024-01-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/08/post-gra-alg-2/" title="UCAS算法OJ：动规"><img src="/img/algo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="UCAS算法OJ：动规"/></a><div class="content"><a class="title" href="/2024/01/08/post-gra-alg-2/" title="UCAS算法OJ：动规">UCAS算法OJ：动规</a><time datetime="2024-01-08T07:53:16.000Z" title="发表于 2024-01-08 15:53:16">2024-01-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/15/2023-11-review/" title="2023-11月回顾"><img src="/img/December.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2023-11月回顾"/></a><div class="content"><a class="title" href="/2023/12/15/2023-11-review/" title="2023-11月回顾">2023-11月回顾</a><time datetime="2023-12-15T07:31:11.000Z" title="发表于 2023-12-15 15:31:11">2023-12-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/09/2023-8910-review/" title="2023-8910月回顾"><img src="/img/8-9-10.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2023-8910月回顾"/></a><div class="content"><a class="title" href="/2023/11/09/2023-8910-review/" title="2023-8910月回顾">2023-8910月回顾</a><time datetime="2023-11-08T16:42:37.000Z" title="发表于 2023-11-09 00:42:37">2023-11-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/24/ero-manga-hyougenshi/" title="工口漫画表现史"><img src="/img/eromanga.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="工口漫画表现史"/></a><div class="content"><a class="title" href="/2023/10/24/ero-manga-hyougenshi/" title="工口漫画表现史">工口漫画表现史</a><time datetime="2023-10-23T16:54:46.000Z" title="发表于 2023-10-24 00:54:46">2023-10-24</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/footer.png')"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By Yomi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>function loadWaline () {
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://yomi-blog-comment.zeabur.app/',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, null))
+  }
+
+  if (typeof Waline === 'object') initWaline()
+  else {
+    getCSS('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css').then(() => {
+      getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.js').then(initWaline)
+    })
+  }
+}
+
+if ('Waline' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

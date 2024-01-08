@@ -594,6 +594,9 @@
 </div>
 
 <div class="note warning flat"><p>npm重装时记得保存img文件夹，否则会被一同删除。配置文件中的img是这里的文件，文章的图片是在博客source目录的img文件夹，不要搞混。</p>
+</div>
+
+<div class="note warning flat"><p>npm安装的包要到<code>node_modules</code>文件夹下安装，不然会默认安装到当前文件夹。</p>
 </div>]]></content>
       <categories>
         <category>编程</category>
